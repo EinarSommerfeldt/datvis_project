@@ -1,6 +1,5 @@
 #!/bin/bash
 #SBATCH --job-name="python-script"   # Sensible name for the job
-#SBATCH --output=/cluster/home/einarjso/output/out.slurm
 #SBATCH --account=ie-idi   # Account for consumed resources
 #SBATCH --nodes=1             # Allocate 1 nodes for the job
 #SBATCH -c28                  # Number of cores (can vary)
