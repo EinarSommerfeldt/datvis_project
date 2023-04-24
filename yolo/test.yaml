@@ -1,7 +1,7 @@
 # Train/val/test sets as 1) dir: path/to/imgs, 2) file: path/to/imgs.txt, or 3) list: [path/to/imgs1, path/to/imgs2, ..]
 path: C:/Users/einar/Desktop/datvis_project/RDD2022_dataset/RDD2022_released_through_CRDDC2022/RDD2022/  # dataset root dir
-train: Norway/train/images  # train images (relative to 'path') 128 images
-val: Norway/train/images   # val images (relative to 'path') 128 images
+train: [India/train/images]  # train images (relative to 'path') 128 images
+val: [India/train/images]   # val images (relative to 'path') 128 images
 test:  # test images (optional)
 
 # Classes 
