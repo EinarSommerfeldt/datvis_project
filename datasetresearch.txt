@@ -1,0 +1,29 @@
+model.train(data='C:/Users/einar/Desktop/datvis_project/yolo/test.yaml', epochs=100, imgsz=640)
+overrides.update(kwargs)
+self.trainer = TASK_MAP[self.task][1](overrides=overrides, _callbacks=self.callbacks)
+
+'detect': [
+        DetectionModel, 
+	yolo.v8.detect.DetectionTrainer, 
+	yolo.v8.detect.DetectionValidator,
+        yolo.v8.detect.DetectionPredictor]
+
+BaseTrainer:
+self.args = get_cfg(cfg, overrides)
+self.data = check_det_dataset(self.args.data)
+self.trainset, self.testset = self.get_dataset(self.data)
+
+_setup_train(self, world_size):
+self.train_loader = self.get_dataloader(self.trainset, batch_size=batch_size, rank=RANK, mode='train')
+
+DetectionTrainer:
+get_dataloader(self, dataset_path, batch_size, rank=0, mode='train')
+ -> build_dataloader(self.args, batch_size, img_path=dataset_path, stride=gs, rank=rank, mode=mode,
+                             rect=mode == 'val', data_info=self.data)[0]
+
+build_dataloader():
+	dataset = YOLODataset(img_path=img_path)
+
+YOLODataset:
+BaseDataset:
+self.im_files = self.get_img_files(self.img_path)
