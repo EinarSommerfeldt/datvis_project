@@ -45,7 +45,7 @@ def convert_annotations_to_YOLO(folderpath):
             x_center = x_min + box_width/2
             y_center = y_min + box_height/2
 
-            file.write(f"{class_nr} {x_center} {y_center} {box_width} {box_height}/n")
+            file.write(f"{class_nr} {x_center} {y_center} {box_width} {box_height}\n")
         file.close()
             
 
@@ -55,14 +55,16 @@ def convert_annotations_to_YOLO(folderpath):
 
 prefix = "C:/Users/einar/Desktop/datvis_project/RDD2022_dataset/RDD2022_released_through_CRDDC2022/RDD2022/"
 path = prefix+"China_Drone/train"
-#convert_annotations_to_YOLO(path)
+convert_annotations_to_YOLO(path)
 path = prefix+"China_MotorBike/train"
-#convert_annotations_to_YOLO(path)
+convert_annotations_to_YOLO(path)
 path = prefix+"Czech/train"
 convert_annotations_to_YOLO(path)
 path = prefix+"India/train"
 convert_annotations_to_YOLO(path)
 path = prefix+"Japan/train"
+convert_annotations_to_YOLO(path)
+path = prefix+"Norway/train"
 convert_annotations_to_YOLO(path)
 path = prefix+"United_States/train"
 convert_annotations_to_YOLO(path)

@@ -7,19 +7,23 @@ from ultralytics.yolo.utils import LOCAL_RANK, NUM_THREADS, TQDM_BAR_FORMAT, is_
 from ultralytics.yolo.data.dataset import YOLODataset
 from ultralytics.yolo.data.utils import HELP_URL, LOGGER, get_hash
 
-label_path = "C:/path/to/labels"
+label_path = "C:/Users/einar/Desktop/datvis_project/yolo/data_info/labels"
 
 def img2label_paths(img_paths): #TODO: change label paths
     """Define label paths as a function of image paths."""
-    sa, sb = f'{os.sep}images{os.sep}', f'{os.sep}labels{os.sep}'  # /images/, /labels/ substrings
+    #sa, sb = f'{os.sep}images{os.sep}', f'{os.sep}labels{os.sep}'  # /images/, /labels/ substrings
+    #"region = img_paths[0].split(f'{os.sep}RDD2022{os.sep}')[1].split(os.sep)[0] 
+    #filename = img_paths[0].rsplit(os.sep, 1)[1].split('.')[0] + '.txt'
+    #label = os.sep.join([label_path, region, filename])
+    return [os.sep.join([label_path, 
+                         x.split(f'{os.sep}RDD2022{os.sep}')[1].split(os.sep)[0], 
+                         x.rsplit(os.sep, 1)[1].split('.')[0] + '.txt']) for x in img_paths] 
     return [sb.join(x.rsplit(sa, 1)).rsplit('.', 1)[0] + '.txt' for x in img_paths]
 
 class CustomDataset(YOLODataset):
     def get_labels(self):
         """Returns dictionary of labels for YOLO training."""
         self.label_files = img2label_paths(self.im_files)
-        print("--------------------self.label_files[0]-------------------------------")
-        print(self.label_files[0])
         cache_path = Path(self.label_files[0]).parent.with_suffix('.cache')
         try:
             import gc
@@ -37,7 +41,7 @@ class CustomDataset(YOLODataset):
             d = f'Scanning {cache_path}... {nf} images, {nm + ne} backgrounds, {nc} corrupt'
             tqdm(None, desc=self.prefix + d, total=n, initial=n, bar_format=TQDM_BAR_FORMAT)  # display cache results
             if cache['msgs']:
-                LOGGER.info('\n'.join(cache['msgs']))  # display warnings
+                LOGGER.info('/n'.join(cache['msgs']))  # display warnings
         if nf == 0:  # number of labels found
             raise FileNotFoundError(f'{self.prefix}No labels found in {cache_path}, can not start training. {HELP_URL}')
 
