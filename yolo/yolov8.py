@@ -7,8 +7,4 @@ filepath = RDD2022 + "Norway/train/images/"
 model = YOLO('yolov8n.pt')  # load an official model
 #model = YOLO('path/to/best.pt')  # load a custom model
 
-# Predict with the model
-#model.predict('https://ultralytics.com/images/bus.jpg', save=True, imgsz=640, conf=0.5)
-
-#model.predict(filepath+"Norway_000226.jpg", save=True, imgsz=640, conf=0.5)
 model.train(data='C:/Users/einar/Desktop/datvis_project/yolo/test.yaml', epochs=100, imgsz=640)
