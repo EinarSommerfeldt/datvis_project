@@ -1,7 +1,8 @@
 import os
 
 # dataset root dir
-path = "C:/Users/einar/Desktop/datvis_project/RDD2022_dataset/RDD2022_released_through_CRDDC2022/RDD2022/"  
+path = "C:/Users/einar/Desktop/datvis_project/RDD2022_dataset/RDD2022_released_through_CRDDC2022/RDD2022/"
+path = "/cluster/projects/itea_lille-idi-tdt4265/datasets/rdd2022/RDD2022/"  
 dirs = ["China_Drone/train/images", 
 	"China_MotorBike/train/images", 
 	"Czech/train/images", 
@@ -9,7 +10,6 @@ dirs = ["China_Drone/train/images",
 	"Japan/train/images", 
 	"Norway/train/images", 
 	"United_States/train/images"] 
-dirs = ["Norway/train/images"]
 
 def fill_image_paths(train_filename, val_filename, train_prop: float):
     train_file = open(train_filename, "w")
@@ -27,4 +27,4 @@ def fill_image_paths(train_filename, val_filename, train_prop: float):
 
 
 
-fill_image_paths("C:/Users/einar/Desktop/datvis_project/yolo/data_info/train.txt","C:/Users/einar/Desktop/datvis_project/yolo/data_info/val.txt", 0.9)
+fill_image_paths("/cluster/home/einarjso/datvis_project/yolo/data_info/train.txt","/cluster/home/einarjso/datvis_project/yolo/data_info/val.txt", 0.9)

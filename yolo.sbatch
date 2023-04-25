@@ -4,7 +4,7 @@
 #SBATCH --mem=64GB # Total memory you need. Most DL jobs should do fine with 64GB.
 #SBATCH --nodes=1 # Number of nodes. Leave this to 1 as long as you're not running multi-node/multi-gpu training
 #SBATCH --cpus-per-task=4 # Number of CPU cores required. Most V100 nodes has 4 CPU cores per GPU, so to maximize usage of the nodes, leave it to 4 (unless you know that your specific node has more than 4 cores/GPU).
-#SBATCH --job-name=my_test_job # Set this to whatever you want
+#SBATCH --job-name=training_job # Set this to whatever you want
 #SBATCH --output=/cluster/home/einarjso/datvis_project/output/JOB%j.out# The output file. NOTE! The output directory (/cluster/home/haakohu/ in this case)  has to exist before you submit the job!
 #SBATCH --time=8:00:00 # Maximum running time of your job.
 #SBATCH --export=ALL # Export all environment variables.
@@ -25,6 +25,16 @@ module purge
 module load cuDNN/8.2.1.32-CUDA-11.3.1
 module load Anaconda3/2020.07 
 
+__conda_setup="$('/cluster/apps/eb/software/Anaconda3/2020.07/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+   if [ -f "/cluster/apps/eb/software/Anaconda3/2020.07/etc/profile.d/conda.sh" ]; then
+      . "/cluster/apps/eb/software/Anaconda3/2020.07/etc/profile.d/conda.sh"
+   else
+      export PATH="/cluster/apps/eb/software/Anaconda3/2020.07/bin:$PATH"
+   fi
+fi
 unset __conda_setup
 conda activate deeplearning # NOTE! Change the environment variable
 cd /cluster/home/einarjso/datvis_project # CD to the folder containing your files on the server
