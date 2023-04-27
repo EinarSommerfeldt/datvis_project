@@ -7,7 +7,7 @@ from ultralytics.yolo.utils import LOCAL_RANK, NUM_THREADS, TQDM_BAR_FORMAT, is_
 from ultralytics.yolo.data.dataset import YOLODataset
 from ultralytics.yolo.data.utils import HELP_URL, LOGGER, get_hash
 
-label_path = "/cluster/home/einarjso/datvis_project/yolo/data_info/labels"
+label_path = "/content/RDD2022/labels"
 
 def img2label_paths(img_paths): #TODO: change label paths
     """Define label paths as a function of image paths."""
