@@ -25,6 +25,9 @@ def convert_annotations_to_YOLO(folderpath):
         objects = root.findall("object")
         if objects == []:
             continue
+        if not os.path.exists(folderpath+"/labels"):
+            os.makedirs(folderpath+"/labels")
+
         file =open(folderpath+"/labels/"+f_name+".txt", "w" )
         for obj in objects:
             class_name = obj.findtext("name")
