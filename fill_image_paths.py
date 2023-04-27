@@ -2,7 +2,9 @@ import os
 
 # dataset root dir
 path = "C:/Users/einar/Desktop/datvis_project/RDD2022_dataset/RDD2022_released_through_CRDDC2022/RDD2022/"
-path = "/cluster/projects/itea_lille-idi-tdt4265/datasets/rdd2022/RDD2022/"  
+path = "/cluster/projects/itea_lille-idi-tdt4265/datasets/rdd2022/RDD2022/" #idun
+path = "/content/RDD2022" #colab
+
 dirs = ["China_Drone/train/images", 
 	"China_MotorBike/train/images", 
 	"Czech/train/images", 
@@ -26,5 +28,7 @@ def fill_image_paths(train_filename, val_filename, train_prop: float):
                 val_file.write(line.replace("/", os.sep))
 
 
-
-fill_image_paths("/cluster/home/einarjso/datvis_project/yolo/data_info/train.txt","/cluster/home/einarjso/datvis_project/yolo/data_info/val.txt", 0.9)
+#idun
+#fill_image_paths("/cluster/home/einarjso/datvis_project/yolo/data_info/train.txt","/cluster/home/einarjso/datvis_project/yolo/data_info/val.txt", 0.9)
+#colab
+fill_image_paths("/content/train.txt","/content/val.txt", 0.9)
