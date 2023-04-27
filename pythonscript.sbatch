@@ -23,4 +23,4 @@ fi
 unset __conda_setup
 conda activate deeplearning 
 cd /cluster/home/einarjso/datvis_project 
-python test.py 
+python fill_image_paths.py 
