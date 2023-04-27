@@ -51,20 +51,16 @@ def convert_annotations_to_YOLO(folderpath):
 
 
 
-        
+dirs = ["China_Drone/train", 
+        "China_MotorBike/train", 
+        "Czech/train", 
+        "India/train", 
+        "Japan/train", 
+        "Norway/train",
+        "United_States/train"]
+#colab
+prefix = "/content/RDD2022/"
 
-prefix = "C:/Users/einar/Desktop/datvis_project/RDD2022_dataset/RDD2022_released_through_CRDDC2022/RDD2022/"
-path = prefix+"China_Drone/train"
-convert_annotations_to_YOLO(path)
-path = prefix+"China_MotorBike/train"
-convert_annotations_to_YOLO(path)
-path = prefix+"Czech/train"
-convert_annotations_to_YOLO(path)
-path = prefix+"India/train"
-convert_annotations_to_YOLO(path)
-path = prefix+"Japan/train"
-convert_annotations_to_YOLO(path)
-path = prefix+"Norway/train"
-convert_annotations_to_YOLO(path)
-path = prefix+"United_States/train"
-convert_annotations_to_YOLO(path)
+for d in dirs:
+    path = prefix + d
+    convert_annotations_to_YOLO(path)
