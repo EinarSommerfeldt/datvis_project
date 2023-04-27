@@ -28,8 +28,8 @@ def convert_annotations_to_YOLO(rdd2022folder, folderpath):
             continue
         
         region = f_name.rsplit("_", 1)[0]
-        if not os.path.exists(rdd2022folder+"/labels"+region):
-            os.makedirs(rdd2022folder+"/labels"+region)
+        if not os.path.exists(rdd2022folder+"/labels/"+region):
+            os.makedirs(rdd2022folder+"/labels/"+region)
         file =open(rdd2022folder+"labels/"+region+"/"+f_name+".txt", "w" )
         for obj in objects:
             class_name = obj.findtext("name")
