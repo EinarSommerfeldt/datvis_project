@@ -3,7 +3,7 @@ import os
 # dataset root dir
 path = "C:/Users/einar/Desktop/datvis_project/RDD2022_dataset/RDD2022_released_through_CRDDC2022/RDD2022/"
 path = "/cluster/projects/itea_lille-idi-tdt4265/datasets/rdd2022/RDD2022/" #idun
-path = "/content/RDD2022" #colab
+path = "/content/RDD2022/" #colab
 
 dirs = ["China_Drone/train/images", 
 	"China_MotorBike/train/images", 
